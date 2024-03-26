@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import useFetch from "./useFetch";
+import Table from "./PatientTable/Table";
+import "./App.css";
+import RangeSlider from "./RangeSlider";
+const App = () => {
+  const { data, loading, error } = useFetch('https://hapi.fhir.org/baseR4/Patient?_pretty=true');
+  const [rangeValue, setRangeValue] = useState([0, 100]);
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
 
-function App() {
+  if (error) {
+    return <h1>Error: {error.message}</h1>;
+  }
+  
+
+  const handleChange = (event, newValue) => {
+    setRangeValue(newValue);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <main>
+      <RangeSlider value={rangeValue} handleChange={handleChange}/>
+      <table className="tb_patient_info" width="100%" cellPadding="0" cellSpacing="0">
+      <Table data={data} ageRange={rangeValue}/>
+      </table>
+    </main>
+  )
 }
 
 export default App;
