@@ -6,10 +6,8 @@ const TableBody = (props) => {
     const birthYearEnd = currentYear - ageRange[0];
 
     const filteredData = data && data.filter(date => {
-        if(date?.resource?.birthDate){
-            const birthYear = new Date(`${date?.resource?.birthDate}`)?.getFullYear();
+        const birthYear = new Date(`${date?.resource?.birthDate}`)?.getFullYear();
         return birthYear >= birthYearStart && birthYear <= birthYearEnd;
-        }
     });
     
     return (
