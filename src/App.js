@@ -3,6 +3,7 @@ import useFetch from "./useFetch";
 import Table from "./PatientTable/Table";
 import "./App.css";
 import RangeSlider from "./RangeSlider";
+import Accordian from "./PatientTable/Accordian";
 const App = () => {
   const { data, loading, error } = useFetch('https://hapi.fhir.org/baseR4/Patient?_pretty=true');
   const [rangeValue, setRangeValue] = useState([0, 100]);
@@ -24,6 +25,7 @@ const App = () => {
       <table className="tb_patient_info" width="100%" cellPadding="0" cellSpacing="0">
       <Table data={data} ageRange={rangeValue}/>
       </table>
+      <Accordian/>
     </main>
   )
 }

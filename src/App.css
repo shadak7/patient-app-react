@@ -20,3 +20,11 @@ main {
     border-right: none;
 
 }
+
+.open.active p {
+    display: block;
+}
+
+.open p {
+    display: none;
+}
