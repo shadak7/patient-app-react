@@ -39,7 +39,7 @@ const Accordian = () => {
                     return (
                         <>
                     <h1 onClick={(ev)=>handleClick(ev,index)} style={{cursor: "pointer"}} id={index}>{d.title}</h1>
-                    <p style={{display: isTrue == index ? "block" : "none"}}>{d.content}</p>
+                    <p style={{display: isTrue === index ? "block" : "none"}}>{d.content}</p>
                     </>
                     )
                 })
