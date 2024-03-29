@@ -28,7 +28,7 @@ const accordionData = [
 const Accordian = () => {
     const [isTrue, setIsTrue] =  useState(0);
     const handleClick = (e,index) => {
-        if(e.target.id == index){
+        if(+e.target.id === index){
         setIsTrue(index);
     }
 }
